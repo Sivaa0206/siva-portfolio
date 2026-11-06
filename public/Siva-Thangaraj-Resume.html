@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siva Thangaraj — Frontend Engineer — Resume</title>
+    <style>
+      :root { --ink: #16161c; --muted: #5c5c69; --line: #dcdce4; --accent: #4b3fd6; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; background: #ececf1; color: var(--ink);
+        font-family: "Inter", -apple-system, "Segoe UI", Arial, sans-serif;
+        font-size: 13px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+      }
+      .sheet { max-width: 820px; margin: 32px auto; background: #fff; padding: 48px 56px; border-radius: 4px; box-shadow: 0 24px 60px rgba(0,0,0,.14); }
+      header { border-bottom: 2px solid var(--ink); padding-bottom: 18px; }
+      h1 { margin: 0; font-size: 34px; letter-spacing: -.03em; line-height: 1.05; }
+      .role { margin-top: 6px; font-size: 14px; font-weight: 600; color: var(--accent); letter-spacing: .04em; text-transform: uppercase; }
+      .meta { margin-top: 8px; color: var(--muted); font-size: 12px; display: flex; flex-wrap: wrap; gap: 14px; }
+      .meta a { color: var(--muted); }
+      h2 { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 26px 0 10px; }
+      .summary { color: #33333d; }
+      .job { margin-bottom: 16px; break-inside: avoid; }
+      .job-head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+      .job-title { font-weight: 650; font-size: 14px; }
+      .job-company { color: var(--muted); font-size: 12.5px; }
+      .job-dates { font-size: 11.5px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+      ul { margin: 6px 0 0; padding-left: 18px; }
+      li { margin-bottom: 3px; }
+      .stack { font-size: 11.5px; color: var(--muted); margin-top: 5px; }
+      .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+      .skill-row { font-size: 12.5px; margin-bottom: 5px; }
+      .skill-row b { display: inline-block; min-width: 132px; font-weight: 600; }
+      .skill-row span { color: var(--muted); }
+      footer { margin-top: 26px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 11px; color: var(--muted); }
+      @media print {
+        body { background: #fff; font-size: 11.5px; }
+        .sheet { margin: 0; padding: 0; box-shadow: none; max-width: none; }
+        @page { margin: 16mm 18mm; }
+      }
+      @media (max-width: 640px) {
+        .sheet { margin: 0; padding: 28px 22px; }
+        .columns { grid-template-columns: 1fr; }
+        .job-head { flex-direction: column; gap: 2px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <header>
+        <h1>Siva Thangaraj</h1>
+        <div class="role">Frontend Engineer</div>
+        <div class="meta">
+          <span>Chennai, India</span>
+          <span>4+ years experience</span>
+          <a href="https://linkedin.com/in/siva-thangaraj-fe">linkedin.com/in/siva-thangaraj-fe</a>
+          <span>Angular · React · TypeScript</span>
+        </div>
+      </header>
+
+      <h2>Profile</h2>
+      <p class="summary">
+        Frontend Engineer with 4+ years of experience building enterprise web applications with Angular,
+        React and TypeScript. Specialised in micro-frontend architecture, reusable component systems,
+        accessibility and frontend performance. Comfortable owning complex onboarding and banking
+        workflows end to end, from architecture to production delivery.
+      </p>
+
+      <h2>Experience</h2>
+
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <div class="job-title">Software Engineer</div>
+            <div class="job-company">Adixoo Brand Pvt Ltd — Client: Freshworks</div>
+          </div>
+          <div class="job-dates">Aug 2025 – Present</div>
+        </div>
+        <ul>
+          <li>Designed Web Components-based micro-frontend modules enabling independent deployments across 5+ feature domains.</li>
+          <li>Contributed to frontend architecture decisions and established frontend engineering standards.</li>
+          <li>Conducted code reviews and worked on React and TypeScript modernization initiatives.</li>
+          <li>Collaborated with product managers, designers and QA teams across delivery cycles.</li>
+        </ul>
+        <div class="stack">React · TypeScript · Web Components · Micro-Frontends</div>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <div class="job-title">Frontend Developer</div>
+            <div class="job-company">Constient Global Solutions</div>
+          </div>
+          <div class="job-dates">Jul 2023 – Aug 2025</div>
+        </div>
+        <ul>
+          <li>Implemented Crypto.ts-based payload encryption for SBI and Axis Bank onboarding workflows.</li>
+          <li>Built multi-step Angular onboarding workflows using Reactive Forms with dynamic validation and conditional routing.</li>
+          <li>Integrated the DigiLocker API for KYC workflows, plus SSO and token lifecycle management.</li>
+          <li>Integrated the PayU payment gateway for e-commerce gift card transactions.</li>
+          <li>Created EARS-based application specification documents.</li>
+        </ul>
+        <div class="stack">Angular · Reactive Forms · RxJS · REST APIs · SSO · PayU</div>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <div class="job-title">Frontend Developer</div>
+            <div class="job-company">Yamee Cluster Pvt Ltd</div>
+          </div>
+          <div class="job-dates">May 2022 – Jul 2023</div>
+        </div>
+        <ul>
+          <li>Developed responsive Angular applications and reusable component libraries.</li>
+          <li>Used lazy loading and code splitting to improve application delivery.</li>
+          <li>Improved cross-browser compatibility across supported platforms.</li>
+        </ul>
+        <div class="stack">Angular · TypeScript · HTML5 · CSS3 · Bootstrap</div>
+      </div>
+
+      <h2>Technical Skills</h2>
+      <div class="columns">
+        <div class="skill-row"><b>Frontend</b><span>Angular, React.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Bootstrap</span></div>
+        <div class="skill-row"><b>State Management</b><span>Zustand, RxJS, Context API, TanStack Query</span></div>
+        <div class="skill-row"><b>Architecture</b><span>Micro-Frontends, Web Components, Component-Driven Architecture, REST APIs</span></div>
+        <div class="skill-row"><b>Testing &amp; Tooling</b><span>Jest, SonarQube, Jenkins, GitHub, Postman</span></div>
+        <div class="skill-row"><b>Accessibility</b><span>WCAG 2.1, ARIA, Keyboard Navigation, axe DevTools</span></div>
+      </div>
+
+      <footer>References and project details available on request.</footer>
+    </main>
+  </body>
+</html>
