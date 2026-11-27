@@ -13,17 +13,19 @@ export const profile = {
   github: null as string | null,
   resume: `${import.meta.env.BASE_URL}Siva-Thangaraj-Resume.html`,
   hero: {
-    lineOne: 'Engineering',
-    lineTwo: 'Digital',
-    lineThree: 'Experiences.',
+    lineOne: 'Complex systems,',
+    lineTwo: 'made to feel',
+    lineThree: 'simple.',
     intro:
-      "I'm Siva Thangaraj, a Frontend Engineer crafting scalable, accessible, and high-performance web experiences with Angular and React.",
+      "I'm Siva Thangaraj — a frontend engineer in Chennai building secure banking, payments and enterprise SaaS interfaces with Angular, React and TypeScript.",
   },
   stats: [
-    { value: '4.5+', label: 'Years building for the web' },
+    { value: '4.5+', label: 'Years shipping production frontends' },
     { value: '3,000+', label: 'Monthly banking transactions secured' },
-    { value: '5+', label: 'Independently deployed feature domains' },
+    { value: '5+', label: 'Feature domains deployed independently' },
+    { value: '0', label: 'Reported security incidents' },
   ],
+  clients: ['SBI', 'Axis Bank', 'Freshworks', 'RewardKart'],
   disciplines: ['Angular 2+', 'React', 'TypeScript', 'Micro-Frontends', 'Accessibility', 'TanStack Query'],
 }
 

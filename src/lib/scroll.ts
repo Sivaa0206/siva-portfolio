@@ -15,18 +15,21 @@ export function scrollToSection(id: string) {
   if (!target) return
 
   if (lenisInstance) {
-    lenisInstance.scrollTo(target, { offset: 0, duration: 1.4 })
+    lenisInstance.scrollTo(target, { offset: -88, duration: 1.2 })
     return
   }
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' })
+  const top = target.getBoundingClientRect().top + window.scrollY - 88
+  window.scrollTo({ top, behavior: reduced ? 'auto' : 'smooth' })
 }
 
 export function scrollToTop() {
   if (lenisInstance) {
-    lenisInstance.scrollTo(0, { duration: 1.4 })
+    lenisInstance.scrollTo(0, { duration: 1.2 })
     return
   }
-  window.scrollTo({ top: 0, behavior: 'smooth' })
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' })
 }

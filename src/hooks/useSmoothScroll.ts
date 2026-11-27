@@ -1,42 +1,31 @@
 import { useEffect } from 'react'
 import Lenis from 'lenis'
-import { gsap, ScrollTrigger, prefersReducedMotion } from '@/animations/gsapConfig'
 import { setLenis } from '@/lib/scroll'
 
 export function useSmoothScroll(enabled = true) {
   useEffect(() => {
     if (!enabled) return
-    if (prefersReducedMotion()) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 1.1,
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 1.6,
+      touchMultiplier: 1.5,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     })
 
     setLenis(lenis)
 
-    const onScroll = () => ScrollTrigger.update()
-    lenis.on('scroll', onScroll)
-
-    const tick = (time: number) => {
-      lenis.raf(time * 1000)
+    let raf = 0
+    const loop = (time: number) => {
+      lenis.raf(time)
+      raf = window.requestAnimationFrame(loop)
     }
-
-    gsap.ticker.add(tick)
-    gsap.ticker.lagSmoothing(0)
-
-    const refresh = () => ScrollTrigger.refresh()
-    window.addEventListener('load', refresh)
-    const timeout = window.setTimeout(refresh, 600)
+    raf = window.requestAnimationFrame(loop)
 
     return () => {
-      window.clearTimeout(timeout)
-      window.removeEventListener('load', refresh)
-      lenis.off('scroll', onScroll)
-      gsap.ticker.remove(tick)
+      window.cancelAnimationFrame(raf)
       lenis.destroy()
       setLenis(null)
     }

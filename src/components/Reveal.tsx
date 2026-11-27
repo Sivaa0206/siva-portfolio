@@ -1,60 +1,46 @@
-import { useLayoutEffect, useRef, type ReactNode, type RefObject } from 'react'
-import { gsap } from '@/animations/gsapConfig'
-import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { useEffect, useRef, type ReactNode } from 'react'
 
 type RevealProps = {
   children: ReactNode
   className?: string
   delay?: number
-  y?: number
-  duration?: number
-  start?: string
-  as?: 'div' | 'section' | 'li' | 'article' | 'header' | 'footer'
 }
 
-export function Reveal({
-  children,
-  className = '',
-  delay = 0,
-  y = 42,
-  duration = 1.1,
-  start = 'top 88%',
-  as: Tag = 'div',
-}: RevealProps) {
-  const ref = useRef<HTMLElement>(null)
-  const reduced = useReducedMotion()
+export function Reveal({ children, className = '', delay = 0 }: RevealProps) {
+  const ref = useRef<HTMLDivElement>(null)
 
-  useLayoutEffect(() => {
-    const el = ref.current
-    if (!el) return
-    if (reduced) {
-      gsap.set(el, { opacity: 1, y: 0 })
+  useEffect(() => {
+    const element = ref.current
+    if (!element) return
+
+    if (!('IntersectionObserver' in window)) {
+      element.classList.add('is-in')
       return
     }
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y },
-        {
-          opacity: 1,
-          y: 0,
-          duration,
-          delay,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: el, start, once: true },
-        },
-      )
-    }, el)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            element.classList.add('is-in')
+            observer.unobserve(element)
+          }
+        })
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -6% 0px' },
+    )
 
-    return () => ctx.revert()
-  }, [delay, y, duration, start, reduced])
-
-  const Component = Tag as 'div'
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <Component ref={ref as RefObject<HTMLDivElement>} className={className} style={{ opacity: 0 }}>
+    <div
+      ref={ref}
+      className={`reveal ${className}`.trim()}
+      style={{ transitionDelay: `${delay}s` }}
+    >
       {children}
-    </Component>
+    </div>
   )
 }
